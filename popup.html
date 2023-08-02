@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title data-i18n="title">Cache Reiniger</title>
+    <link rel="stylesheet" href="/assets/fonts.css" />
+    <link rel="stylesheet" href="/assets/app.css" />
+    <script defer src="/assets/language.js"></script>
+  </head>
+
+  <body>
+    <div class="logo-container">
+      <img src="/assets/logo.svg" alt="Logo" />
+      <div class="tabs">
+        <button class="tablinks" data-i18n="tab_cache" href="cache">
+          Cache
+        </button>
+        <button class="tablinks" data-i18n="tab_cookies" href="cookies">
+          Cookies
+        </button>
+        <button class="tablinks" data-i18n="tab_history" href="history">
+          History
+        </button>
+      </div>
+      <div class="version">
+        <span>v. 0.03 Beta</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="top">
+        <div id="cache" class="tabcontent active">
+          <h3 data-i18n="heading_cache">Cache</h3>
+          <div class="button-row">
+            <button id="clearCache" data-i18n="btn_clear_cache">
+              Cache löschen
+            </button>
+            <button id="scheduleClearing" data-i18n="btn_auto_clear">
+              Automatisches Löschen einstellen
+            </button>
+            <button id="toggleDevMode" data-i18n="btn_dev_mode">
+              Entwicklermodus: Aus
+            </button>
+          </div>
+
+          <select id="autoClearTime" disabled>
+            <option value="0.5" data-i18n="time_30min">30 min</option>
+            <option value="1" data-i18n="time_1hr">1 Stunde</option>
+            <option value="2" data-i18n="time_2hr">2 Stunden</option>
+            <option value="7" data-i18n="time_7hr">7 Stunden</option>
+            <option value="24" data-i18n="time_1day">1 Tag</option>
+            <option value="72" data-i18n="time_3day">3 Tage</option>
+            <option value="168" data-i18n="time_1week">1 Woche</option>
+          </select>
+
+          <p id="scheduleStatus"></p>
+          <p id="lastCleared"></p>
+        </div>
+
+        <div id="cookies" class="tabcontent">
+          <h3 data-i18n="heading_cookies">Cookies</h3>
+          <div class="button-row">
+            <button id="clearCookies" data-i18n="btn_clear_cookies">
+              Cookies löschen
+            </button>
+          </div>
+          <table id="cookieTable">
+            <thead>
+              <tr>
+                <th data-i18n="table_name">Name</th>
+                <th data-i18n="table_value">Value</th>
+                <th data-i18n="table_domain">Domain</th>
+                <th data-i18n="table_path">Path</th>
+                <th data-i18n="table_expires">Expires</th>
+                <th data-i18n="table_actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div id="history" class="tabcontent">
+          <h3 data-i18n="heading_history">History</h3>
+          <div class="button-row">
+            <button id="clearHistory" data-i18n="btn_clear_history">
+              Clear Browsing History
+            </button>
+          </div>
+          <div class="history-options">
+            <select id="filterHistory">
+              <option value="" data-i18n="history_all">All</option>
+              <option value="1" data-i18n="history_1day">1 Day</option>
+              <option value="3" data-i18n="history_3days">3 Days</option>
+              <option value="7" data-i18n="history_7days">7 Days</option>
+              <option value="30" data-i18n="history_30days">30 Days</option>
+              <option value="90" data-i18n="history_3months">3 Months</option>
+              <option value="365" data-i18n="history_1year">1 Year</option>
+            </select>
+
+            <input
+              type="text"
+              id="searchHistory"
+              placeholder="Search History by URL"
+              data-i18n="search_history"
+            />
+          </div>
+          <div id="historyTableWrapper">
+            <table id="historyTable">
+              <thead>
+                <tr>
+                  <th data-i18n="table_icon">Icon</th>
+                  <th data-i18n="table_title">Title</th>
+                  <th data-i18n="table_url">URL</th>
+                  <th data-i18n="table_actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <p id="status"></p>
+      </div>
+      <div class="footer">
+        <div class="copyright">
+          made with ♥ by
+          <a href="https://daniel-pelz.de" target="blank">Daniel Pelz</a>
+        </div>
+        <div class="settings-small">
+          <div class="toggleDarkmode" data-tooltip="Darkmode">
+            <img class="icon" src="/assets/darkmode.svg" alt="darkmode" />
+          </div>
+        </div>
+        <select id="languageSelect"></select>
+      </div>
+    </div>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>

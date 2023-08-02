@@ -1,0 +1,155 @@
+{
+  "title": {
+    "message": "Cache Reiniger"
+  },
+  "tab_cache": {
+    "message": "Cache"
+  },
+  "tab_cookies": {
+    "message": "Cookies"
+  },
+  "tab_history": {
+    "message": "Verlauf"
+  },
+  "heading_cache": {
+    "message": "Cache"
+  },
+  "btn_clear_cache": {
+    "message": "Cache löschen"
+  },
+  "btn_auto_clear": {
+    "message": "Automatisches Löschen einstellen"
+  },
+  "btn_dev_mode": {
+    "message": "Entwicklermodus: Aus"
+  },
+  "time_30min": {
+    "message": "30 min"
+  },
+  "time_1hr": {
+    "message": "1 Stunde"
+  },
+  "time_2hr": {
+    "message": "2 Stunden"
+  },
+  "time_7hr": {
+    "message": "7 Stunden"
+  },
+  "time_1day": {
+    "message": "1 Tag"
+  },
+  "time_3day": {
+    "message": "3 Tage"
+  },
+  "time_1week": {
+    "message": "1 Woche"
+  },
+  "heading_cookies": {
+    "message": "Cookies"
+  },
+  "btn_clear_cookies": {
+    "message": "Cookies löschen"
+  },
+  "table_name": {
+    "message": "Name"
+  },
+  "table_value": {
+    "message": "Wert"
+  },
+  "table_domain": {
+    "message": "Domain"
+  },
+  "table_path": {
+    "message": "Pfad"
+  },
+  "table_expires": {
+    "message": "Ablaufdatum"
+  },
+  "table_actions": {
+    "message": "Aktionen"
+  },
+  "heading_history": {
+    "message": "Verlauf"
+  },
+  "btn_clear_history": {
+    "message": "Browserverlauf löschen"
+  },
+  "history_all": {
+    "message": "Alles"
+  },
+  "history_1day": {
+    "message": "1 Tag"
+  },
+  "history_3days": {
+    "message": "3 Tage"
+  },
+  "history_7days": {
+    "message": "7 Tage"
+  },
+  "history_30days": {
+    "message": "30 Tage"
+  },
+  "history_3months": {
+    "message": "3 Monate"
+  },
+  "history_1year": {
+    "message": "1 Jahr"
+  },
+  "search_history": {
+    "message": "Verlauf durch URL suchen"
+  },
+  "table_icon": {
+    "message": "Symbol"
+  },
+  "table_title": {
+    "message": "Titel"
+  },
+  "table_url": {
+    "message": "URL"
+  },
+  "status_clear_cache": {
+    "message": "Cache gelöscht."
+  },
+  "start_auto_clear": {
+    "message": "Automatisches Löschen starten."
+  },
+  "stop_auto_clear": {
+    "message": "Automatisches Löschen stoppen."
+  },
+  "status_toggle_schedule": {
+    "message": "Planungsstatus geändert."
+  },
+  "status_toggle_dev": {
+    "message": "Entwicklermodus umgeschaltet."
+  },
+  "status_cookies_removed": {
+    "message": "Alle Cookies wurden entfernt."
+  },
+  "auto_clear_set": {
+    "message": "Automatisches Löschen ist eingestellt."
+  },
+  "auto_clear_not_set": {
+    "message": "Automatisches Löschen ist nicht eingestellt."
+  },
+  "last_cleared": {
+    "message": "Zuletzt gelöscht: "
+  },
+  "not_cleared_yet": {
+    "message": "Cache wurde noch nicht gelöscht."
+  },
+  "dev_mode_on": {
+    "message": "Entwicklermodus: An"
+  },
+  "dev_mode_off": {
+    "message": "Entwicklermodus: Aus"
+  },
+  "dark_mode_on": {
+    "message": "Dunkler Modus: An"
+  },
+  "dark_mode_off": {
+    "message": "Dunkler Modus: Aus"
+  },
+  "reloading_page": {
+    "message": "Erweiterung wird neu geladen..."
+  }
+}

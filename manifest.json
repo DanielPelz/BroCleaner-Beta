@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Cache Reiniger",
+  "description": "Diese Erweiterung löscht den Browser-Cache für die aktuelle Seite.",
+  "version": "1.0",
+  "homepage_url": "https://daniel-pelz.de",
+  "permissions": [
+    "browsingData",
+    "activeTab",
+    "tabs",
+    "storage",
+    "system.memory",
+    "alarms",
+    "cookies",
+    "contentSettings",
+    "history"
+  ],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "default_locale": "en",
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+4",
+        "mac": "Command+Shift+1"
+      },
+      "description": "Cache Reiniger aktivieren"
+    }
+  },
+  "action": {
+    "default_icon": {
+      "16": "/images/icon.png",
+      "48": "/images/icon.png",
+      "128": "/images/icon.png"
+    },
+    "default_title": "Cache Reiniger",
+    "default_popup": "popup.html"
+  }
+}

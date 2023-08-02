@@ -1,0 +1,407 @@
+document.addEventListener("DOMContentLoaded", () => {
+    // Clear cache
+    const clearCacheButton = document.getElementById('clearCache');
+    clearCacheButton.addEventListener(
+        "click", () => {
+            chrome.runtime.sendMessage({ command: "clearCache" }, response => {
+                showStatus(response.status);
+                updateLastCleared();
+            });
+        }
+    );
+
+    // Schedule cache clearing
+    const scheduleButton = document.getElementById('scheduleClearing');
+    const autoClearTimeSelect = document.getElementById('autoClearTime');
+    chrome.storage.local.get(['isScheduled'], data => {
+        const isScheduled = data.isScheduled;
+
+        if (isScheduled) {
+            getMessage("stop_auto_clear", function (message) {
+                scheduleButton.textContent = message;
+                scheduleButton.style.color = 'red';
+                autoClearTimeSelect.disabled = false;
+            });
+        } else {
+            getMessage("start_auto_clear", function (message) {
+                scheduleButton.textContent = message;
+                scheduleButton.style.color = '#2dc743';
+                autoClearTimeSelect.disabled = true;
+            });
+        }
+    });
+
+    // Set the time for auto clearing
+    scheduleButton.addEventListener(
+        "click", () => {
+            chrome.storage.local.get(['isScheduled'], data => {
+                const isScheduled = !data.isScheduled;
+                chrome.runtime.sendMessage({ command: "toggleSchedule", time: autoClearTimeSelect.value }, response => {
+                    getMessage(isScheduled ? "stop_auto_clear" : "start_auto_clear", function (message) {
+                        showStatus(message);
+                        updateScheduleStatus();
+
+                        if (isScheduled) {
+                            getMessage("stop_auto_clear", function (message) {
+                                scheduleButton.textContent = message;
+                                scheduleButton.style.color = 'red';
+                                autoClearTimeSelect.disabled = false;
+                            });
+                        } else {
+                            getMessage("start_auto_clear", function (message) {
+                                scheduleButton.textContent = message;
+                                scheduleButton.style.color = '#2dc743';
+                                autoClearTimeSelect.disabled = true;
+                            });
+                        }
+                    });
+                });
+            });
+        }
+    );
+
+    // Set the time for auto clearing
+    const devModeButton = document.getElementById('toggleDevMode');
+    devModeButton.addEventListener(
+        "click", () => {
+            chrome.runtime.sendMessage({ command: "toggleDevMode" }, response => {
+                showStatus(response.status);
+                updateDevModeStatus();
+            });
+        }
+    );
+
+    // Darkmode Button 
+    const darkmode = document.querySelector('.toggleDarkmode');
+    darkmode.addEventListener(
+        "click", () => {
+            chrome.runtime.sendMessage({ command: "toggleDarkmode" }, response => {
+                showStatus(response.status);
+                updateDarkMode();
+            });
+
+        }
+    );
+
+    // Event listeners
+
+    document.querySelector("#clearCookies").addEventListener("click", () => {
+        clearCookies();
+        setTimeout(renderCookieTable, 1000); // delay to allow the cookies to be cleared
+    });
+
+    document.querySelector("#clearHistory").addEventListener("click", clearHistory);
+
+    document.querySelector("#filterHistory").addEventListener("change", () => {
+        const filter = document.querySelector("#filterHistory").value;
+        renderHistory(filter);
+    });
+
+    document.querySelector("#searchHistory").addEventListener("input", () => {
+        const searchTerm = document.querySelector("#searchHistory").value;
+        renderHistory(null, searchTerm);
+    });
+
+    // Initial rendering
+    renderCookieTable();
+    updateDevModeStatus();
+    updateScheduleStatus();
+    updateLastCleared();
+    renderHistory();
+    tooltip();
+
+});
+
+function showStatus(messageKey) {
+    getMessage(messageKey, function (message) {
+        const status = document.getElementById('status');
+        status.textContent = message;
+        status.classList.add('show');
+        setTimeout(() => {
+            status.classList.remove('show');
+        }, 3000);  // Hide status after 3 seconds
+    });
+}
+
+function updateScheduleStatus() {
+    chrome.storage.local.get(['isScheduled'], data => {
+        getMessage(data.isScheduled ? "auto_clear_set" : "auto_clear_not_set", function (message) {
+            document.getElementById('scheduleStatus').textContent = message;
+        });
+    });
+}
+
+function updateLastCleared() {
+    chrome.storage.local.get(['lastCleared'], data => {
+        getMessage(data.lastCleared ? "last_cleared" : "not_cleared_yet", function (message) {
+            document.getElementById('lastCleared').textContent = data.lastCleared ? `${message}${new Date(data.lastCleared).toLocaleString()}` : message;
+        });
+    });
+}
+
+function updateDevModeStatus() {
+    chrome.storage.local.get(['isDevMode'], data => {
+        getMessage(data.isDevMode ? "dev_mode_on" : "dev_mode_off", function (message) {
+            document.getElementById('toggleDevMode').textContent = message;
+            document.body.className = data.isDevMode ? 'devMode' : '';
+        });
+    });
+}
+
+function updateDarkMode() {
+    chrome.storage.local.get(['isDarkMode'], data => {
+        document.body.className = data.isDarkMode ? 'darkMode' : '';
+        getMessage(data.isDevMode ? "dev_mode_on" : "dev_mode_off", function (message) {
+            document.body.className = data.isDevMode ? 'devMode' : '';
+        });
+    });
+}
+
+// COOKIES FUNCTIONS
+function clearCookies() {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+        const url = tabs[0].url;
+        chrome.cookies.getAll({ url: url }, cookies => {
+            for (let i = 0; i < cookies.length; i++) {
+                chrome.cookies.remove({ url: url, name: cookies[i].name });
+            }
+            getMessage("status_cookies_removed", function (message) {
+                showStatus(message);
+                renderCookieTable();
+            });
+        });
+    });
+}
+
+
+function renderCookieTable() {
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+        const url = tabs[0].url;
+        // Get all cookies for the current tab
+        chrome.cookies.getAll({ url: url }, cookies => {
+            let cookieTableBody = document.getElementById('cookieTable').getElementsByTagName('tbody')[0];
+            cookieTableBody.innerHTML = '';
+            console.log(cookies);
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i];
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${cookie.name}</td>
+                    <td>${cookie.value}</td>
+                    <td>${cookie.domain}</td>
+                    <td>${cookie.path}</td>
+                    <td>${cookie.expirationDate ? new Date(cookie.expirationDate * 1000).toLocaleDateString() : ''}</td>
+                    <td>
+                        <button class="removeCookie">Remove</button>
+                    </td>
+                `;
+                row.querySelector('.removeCookie').addEventListener("click", function () {
+                    chrome.runtime.sendMessage({ command: "removeCookie", cookie: cookie }, response => {
+                        console.log(response.status);
+                        renderCookieTable();
+                    });
+                });
+
+                cookieTableBody.appendChild(row);
+            }
+        });
+    });
+}
+
+window.onload = renderCookieTable;
+
+
+// HISTORY FUNCTIONS
+
+//History function
+function clearHistory() {
+    const millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+    const oneWeekAgo = (new Date()).getTime() - millisecondsPerWeek;
+    chrome.browsingData.remove({
+        "since": oneWeekAgo
+    }, {
+        "history": true
+    }, () => {
+        getMessage("status_clear_history", function (message) {
+            showStatus(message);
+            renderHistory();
+        });
+    });
+}
+
+//Render History
+function renderHistory(filter, searchTerm) {
+    createLoader("Daten werden geladen...");
+    const historyTableBody = document.getElementById('historyTable').getElementsByTagName('tbody')[0];
+    historyTableBody.innerHTML = '';
+
+    let startTime = 0;
+    if (filter) {
+        const millisecondsPerDay = 1000 * 60 * 60 * 24;
+        startTime = (new Date()).getTime() - filter * millisecondsPerDay;
+    }
+
+    chrome.history.search({
+        'text': searchTerm || '',
+        'startTime': startTime,
+        'maxResults': 100
+    }, data => {
+        data.forEach(item => {
+            let row = document.createElement('tr');
+            row.innerHTML = `
+                <td><img src='http://www.google.com/s2/favicons?domain=${item.url}' /></td>
+                <td>${item.title}</td>
+                <td><a href="${item.url}" target="_blank">${item.url}</a></td>
+                <td><button class="removeHistory" data-id="${item.id}">Remove</button></td>
+            `;
+            row.querySelector('.removeHistory').addEventListener("click", function () {
+                chrome.history.deleteUrl({ url: item.url }, function () {
+                    getMessage("status_history_removed", function (message) {
+                        showStatus(message);
+                        renderHistory(filter, searchTerm);
+                    });
+                });
+            });
+
+            historyTableBody.appendChild(row);
+
+        });
+        updateLoaderMessage("Verlaufs Daten werden erstellt...");
+
+        removeLoader();
+    });
+}
+
+function openTab(tabId) {
+    const tabcontent = document.getElementsByClassName("tabcontent");
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+        tabcontent[i].style.display = "none";
+        tabcontent[i].style.opacity = 0;
+    }
+    const tablinks = document.getElementsByClassName("tablinks");
+    for (let i = 0; i < tablinks.length; i++) {
+        if (tablinks[i].getAttribute("href") === tabId) {
+            tablinks[i].classList.add("active");
+        } else {
+            tablinks[i].classList.remove("active");
+        }
+    }
+    const activeTab = document.getElementById(tabId);
+    activeTab.classList.add("active");
+
+    activeTab.style.display = "block";
+    setTimeout(() => {
+        activeTab.style.opacity = 1;
+    }, 100);
+
+    // Check if active tab is "cookies" and add class to body
+    if (tabId === "cookies") {
+        document.body.classList.add("cookies-active");
+    } else {
+        document.body.classList.remove("cookies-active");
+    }
+    if (tabId === "history") {
+        document.body.classList.add("history-active");
+    } else {
+        document.body.classList.remove("history-active");
+    }
+}
+
+// Initialize the function for all tablinks
+const tablinks = document.getElementsByClassName("tablinks");
+for (let i = 0; i < tablinks.length; i++) {
+    tablinks[i].addEventListener("click", function () {
+        const tabId = this.getAttribute("href");
+        openTab(tabId);
+    });
+}
+
+// Loader functionality 
+
+function createLoader(message) {
+    // Create loader div
+    const loader = document.createElement("div");
+    loader.setAttribute("id", "loader");
+
+    // Create an inner div to hold the message and loading image
+    const innerDiv = document.createElement("div");
+    innerDiv.setAttribute("id", "loader-inner");
+
+
+    // Create loading image
+    const img = document.createElement("img");
+    img.setAttribute("src", "assets/loader.gif"); // replace loader.gif with your loader image path
+
+
+    // Create message span
+    const span = document.createElement("span");
+    span.textContent = message;
+
+    // Append everything
+    innerDiv.appendChild(img);
+    innerDiv.appendChild(span);
+    loader.appendChild(innerDiv);
+    // Append loader to to .container 
+    document.querySelector(".container").appendChild(loader);
+
+}
+
+function updateLoaderMessage(message) {
+    const loader = document.getElementById("loader");
+    if (loader) {
+        const span = loader.getElementsByTagName("span")[0];
+        if (span) {
+            span.textContent = message;
+        }
+    }
+}
+
+function removeLoader() {
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.remove();
+    }
+}
+
+// gimics 
+
+// tooltip from data-tooltip attribute
+
+function tooltip() {
+    const elements = document.querySelectorAll('[data-tooltip]');
+    elements.forEach(element => {
+        const tooltipText = element.getAttribute('data-tooltip');
+        const tooltipDirection = element.getAttribute('data-tooltip-direction') || 'top';
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.classList.add(`tooltip-${tooltipDirection}`);
+        tooltip.textContent = tooltipText;
+        element.appendChild(tooltip);
+
+        // Set position of tooltip
+        element.style.position = 'relative';
+        tooltip.style.position = 'absolute';
+
+        // Add event listener for hover
+        element.addEventListener('mouseover', () => {
+            tooltip.style.opacity = 0;
+            tooltip.style.visibility = 'visible';
+            tooltip.style.display = 'block';
+            tooltip.style.transition = 'opacity 0.3s ease-in-out';
+            setTimeout(() => {
+                tooltip.style.opacity = 1;
+            }, 10);
+        });
+
+        // Add event listener for mouseout
+        element.addEventListener('mouseout', () => {
+            tooltip.style.opacity = 0;
+            tooltip.style.visibility = 'hidden';
+            tooltip.style.display = 'none';
+            tooltip.style.transition = 'opacity 0.3s ease-in-out';
+        });
+    });
+}
+
+

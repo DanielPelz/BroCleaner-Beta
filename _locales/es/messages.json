@@ -1,0 +1,155 @@
+{
+  "title": {
+    "message": "Limpiador de caché"
+  },
+  "tab_cache": {
+    "message": "Caché"
+  },
+  "tab_cookies": {
+    "message": "Cookies"
+  },
+  "tab_history": {
+    "message": "Historial"
+  },
+  "heading_cache": {
+    "message": "Caché"
+  },
+  "btn_clear_cache": {
+    "message": "Limpiar caché"
+  },
+  "btn_auto_clear": {
+    "message": "Establecer limpieza automática"
+  },
+  "btn_dev_mode": {
+    "message": "Modo de desarrollo: Apagado"
+  },
+  "time_30min": {
+    "message": "30 min"
+  },
+  "time_1hr": {
+    "message": "1 hora"
+  },
+  "time_2hr": {
+    "message": "2 horas"
+  },
+  "time_7hr": {
+    "message": "7 horas"
+  },
+  "time_1day": {
+    "message": "1 día"
+  },
+  "time_3day": {
+    "message": "3 días"
+  },
+  "time_1week": {
+    "message": "1 semana"
+  },
+  "heading_cookies": {
+    "message": "Cookies"
+  },
+  "btn_clear_cookies": {
+    "message": "Limpiar cookies"
+  },
+  "table_name": {
+    "message": "Nombre"
+  },
+  "table_value": {
+    "message": "Valor"
+  },
+  "table_domain": {
+    "message": "Dominio"
+  },
+  "table_path": {
+    "message": "Ruta"
+  },
+  "table_expires": {
+    "message": "Expira"
+  },
+  "table_actions": {
+    "message": "Acciones"
+  },
+  "heading_history": {
+    "message": "Historial"
+  },
+  "btn_clear_history": {
+    "message": "Limpiar historial de navegación"
+  },
+  "history_all": {
+    "message": "Todo"
+  },
+  "history_1day": {
+    "message": "1 día"
+  },
+  "history_3days": {
+    "message": "3 días"
+  },
+  "history_7days": {
+    "message": "7 días"
+  },
+  "history_30days": {
+    "message": "30 días"
+  },
+  "history_3months": {
+    "message": "3 meses"
+  },
+  "history_1year": {
+    "message": "1 año"
+  },
+  "search_history": {
+    "message": "Buscar historial por URL"
+  },
+  "table_icon": {
+    "message": "Ícono"
+  },
+  "table_title": {
+    "message": "Título"
+  },
+  "table_url": {
+    "message": "URL"
+  },
+  "status_clear_cache": {
+    "message": "Caché borrado."
+  },
+  "start_auto_clear": {
+    "message": "Iniciar borrado automático."
+  },
+  "stop_auto_clear": {
+    "message": "Detener borrado automático."
+  },
+  "status_toggle_schedule": {
+    "message": "Estado del horario cambiado."
+  },
+  "status_toggle_dev": {
+    "message": "Modo de desarrollador conmutado."
+  },
+  "status_cookies_removed": {
+    "message": "Se han eliminado todas las cookies."
+  },
+  "auto_clear_set": {
+    "message": "El borrado automático está configurado."
+  },
+  "auto_clear_not_set": {
+    "message": "El borrado automático no está configurado."
+  },
+  "last_cleared": {
+    "message": "Última vez borrado: "
+  },
+  "not_cleared_yet": {
+    "message": "Aún no se ha borrado la caché."
+  },
+  "dev_mode_on": {
+    "message": "Modo de desarrollador: Activado"
+  },
+  "dev_mode_off": {
+    "message": "Modo de desarrollador: Desactivado"
+  },
+  "dark_mode_on": {
+    "message": "Modo oscuro: Activado"
+  },
+  "dark_mode_off": {
+    "message": "Modo oscuro: Desactivado"
+  },
+  "reloading_page": {
+    "message": "Recargando extensión..."
+  }
+}

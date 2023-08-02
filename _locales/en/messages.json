@@ -1,0 +1,155 @@
+{
+  "title": {
+    "message": "Cache Cleaner"
+  },
+  "tab_cache": {
+    "message": "Cache"
+  },
+  "tab_cookies": {
+    "message": "Cookies"
+  },
+  "tab_history": {
+    "message": "History"
+  },
+  "heading_cache": {
+    "message": "Cache"
+  },
+  "btn_clear_cache": {
+    "message": "Clear Cache"
+  },
+  "btn_auto_clear": {
+    "message": "Set Automatic Clearing"
+  },
+  "btn_dev_mode": {
+    "message": "Developer Mode: Off"
+  },
+  "time_30min": {
+    "message": "30 min"
+  },
+  "time_1hr": {
+    "message": "1 Hour"
+  },
+  "time_2hr": {
+    "message": "2 Hours"
+  },
+  "time_7hr": {
+    "message": "7 Hours"
+  },
+  "time_1day": {
+    "message": "1 Day"
+  },
+  "time_3day": {
+    "message": "3 Days"
+  },
+  "time_1week": {
+    "message": "1 Week"
+  },
+  "heading_cookies": {
+    "message": "Cookies"
+  },
+  "btn_clear_cookies": {
+    "message": "Clear Cookies"
+  },
+  "table_name": {
+    "message": "Name"
+  },
+  "table_value": {
+    "message": "Value"
+  },
+  "table_domain": {
+    "message": "Domain"
+  },
+  "table_path": {
+    "message": "Path"
+  },
+  "table_expires": {
+    "message": "Expires"
+  },
+  "table_actions": {
+    "message": "Actions"
+  },
+  "heading_history": {
+    "message": "History"
+  },
+  "btn_clear_history": {
+    "message": "Clear Browsing History"
+  },
+  "history_all": {
+    "message": "All"
+  },
+  "history_1day": {
+    "message": "1 Day"
+  },
+  "history_3days": {
+    "message": "3 Days"
+  },
+  "history_7days": {
+    "message": "7 Days"
+  },
+  "history_30days": {
+    "message": "30 Days"
+  },
+  "history_3months": {
+    "message": "3 Months"
+  },
+  "history_1year": {
+    "message": "1 Year"
+  },
+  "search_history": {
+    "message": "Search History by URL"
+  },
+  "table_icon": {
+    "message": "Icon"
+  },
+  "table_title": {
+    "message": "Title"
+  },
+  "table_url": {
+    "message": "URL"
+  },
+  "status_clear_cache": {
+    "message": "Cache cleared."
+  },
+  "start_auto_clear": {
+    "message": "Start automatic clearing."
+  },
+  "stop_auto_clear": {
+    "message": "Stop automatic clearing."
+  },
+  "status_toggle_schedule": {
+    "message": "Schedule status changed."
+  },
+  "status_toggle_dev": {
+    "message": "Developer mode toggled."
+  },
+  "status_cookies_removed": {
+    "message": "All cookies have been removed."
+  },
+  "auto_clear_set": {
+    "message": "Automatic clearing is set."
+  },
+  "auto_clear_not_set": {
+    "message": "Automatic clearing is not set."
+  },
+  "last_cleared": {
+    "message": "Last cleared: "
+  },
+  "not_cleared_yet": {
+    "message": "Cache has not been cleared yet."
+  },
+  "dev_mode_on": {
+    "message": "Developer mode: On"
+  },
+  "dev_mode_off": {
+    "message": "Developer mode: Off"
+  },
+  "dark_mode_on": {
+    "message": "Darkmode On"
+  },
+  "dark_mode_off": {
+    "message": "Darkmode Off"
+  },
+  "reloading_page": {
+    "message": "Reloading Extension..."
+  }
+}

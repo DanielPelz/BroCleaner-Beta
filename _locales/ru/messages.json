@@ -1,0 +1,155 @@
+{
+  "title": {
+    "message": "Очиститель кэша"
+  },
+  "tab_cache": {
+    "message": "Кэш"
+  },
+  "tab_cookies": {
+    "message": "Куки"
+  },
+  "tab_history": {
+    "message": "История"
+  },
+  "heading_cache": {
+    "message": "Кэш"
+  },
+  "btn_clear_cache": {
+    "message": "Очистить кэш"
+  },
+  "btn_auto_clear": {
+    "message": "Настроить автоматическую очистку"
+  },
+  "btn_dev_mode": {
+    "message": "Режим разработчика: Выкл"
+  },
+  "time_30min": {
+    "message": "30 мин"
+  },
+  "time_1hr": {
+    "message": "1 час"
+  },
+  "time_2hr": {
+    "message": "2 часа"
+  },
+  "time_7hr": {
+    "message": "7 часов"
+  },
+  "time_1day": {
+    "message": "1 день"
+  },
+  "time_3day": {
+    "message": "3 дня"
+  },
+  "time_1week": {
+    "message": "1 неделя"
+  },
+  "heading_cookies": {
+    "message": "Куки"
+  },
+  "btn_clear_cookies": {
+    "message": "Очистить куки"
+  },
+  "table_name": {
+    "message": "Имя"
+  },
+  "table_value": {
+    "message": "Значение"
+  },
+  "table_domain": {
+    "message": "Домен"
+  },
+  "table_path": {
+    "message": "Путь"
+  },
+  "table_expires": {
+    "message": "Истекает"
+  },
+  "table_actions": {
+    "message": "Действия"
+  },
+  "heading_history": {
+    "message": "История"
+  },
+  "btn_clear_history": {
+    "message": "Очистить историю браузера"
+  },
+  "history_all": {
+    "message": "Все"
+  },
+  "history_1day": {
+    "message": "1 день"
+  },
+  "history_3days": {
+    "message": "3 дня"
+  },
+  "history_7days": {
+    "message": "7 дней"
+  },
+  "history_30days": {
+    "message": "30 дней"
+  },
+  "history_3months": {
+    "message": "3 месяца"
+  },
+  "history_1year": {
+    "message": "1 год"
+  },
+  "search_history": {
+    "message": "Поиск в истории по URL"
+  },
+  "table_icon": {
+    "message": "Иконка"
+  },
+  "table_title": {
+    "message": "Заголовок"
+  },
+  "table_url": {
+    "message": "URL"
+  },
+  "status_clear_cache": {
+    "message": "Кэш очищен."
+  },
+  "start_auto_clear": {
+    "message": "Автоматическая очистка запущена."
+  },
+  "stop_auto_clear": {
+    "message": "Автоматическая очистка остановлена."
+  },
+  "status_toggle_schedule": {
+    "message": "Расписание переключено."
+  },
+  "status_toggle_dev": {
+    "message": "Режим разработчика переключен."
+  },
+  "status_cookies_removed": {
+    "message": "Куки удалены."
+  },
+  "auto_clear_set": {
+    "message": "Автоматическая очистка установлена на"
+  },
+  "auto_clear_not_set": {
+    "message": "Автоматическая очистка не установлена."
+  },
+  "last_cleared": {
+    "message": "Последняя очистка: "
+  },
+  "not_cleared_yet": {
+    "message": "Еще не очищено."
+  },
+  "dev_mode_on": {
+    "message": "Режим разработчика: Вкл"
+  },
+  "dev_mode_off": {
+    "message": "Режим разработчика: Выкл"
+  },
+  "dark_mode_on": {
+    "message": "Темный режим: Вкл"
+  },
+  "dark_mode_off": {
+    "message": " Темный режим: Выкл"
+  },
+  "reloading_page": {
+    "message": "Перезагрузка страницы..."
+  }
+}
